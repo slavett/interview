@@ -4,19 +4,32 @@
     <title>Interview</title>
     <%= csrf_meta_tags %>
 
-    <!-- CDN for Bootstrap (UI/Front-End Framework)-->
-    <!-- Can alternatively install gem for bootstrap in a larger-scaled project-->
-	<%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
-
   <body>
 
-  	<div class="container">
+  	<!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	  	<div class="navbar-brand">Highlands Interview</div>
+	    <div class="collapse navbar-collapse" id="navbarCollapse">
+	    	<ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active">
+	          		<%= link_to 'Create New Product', "/products/new", class: "nav-link", style: 'color:#FFFFFF;' %> 
+	        	</li>
+	        	<li class="nav-item">
+	          		<%= link_to 'List/Search Products', "/products", class: "nav-link", style: 'color:#FFFFFF;' %> 
+	        	</li>
+	      </ul>
+	      <span class="navbar-text">
+     		 	Username
+    	  </span>
+	    </div>
+  </nav>
+
+  	<div class="container" style="padding-top: 60px">
 
 	  	<!-- Project Header -->
 	  	<div class="container text-center">
@@ -30,7 +43,7 @@
 	    <%= yield %>
 
 	    <!-- Project Footer -->
-	    <div class="container fixed-bottom text-center">
+	    <div class="container fixed-bottom text-center" style: 'color:#FFFFFF;'>
 	      	<div class="row" style="margin: 30px;">
 				<div class="col-lg-12">
 		        	<span class="text">By: Stephen Lavett -- Highlands Interview Project</span>

@@ -6,11 +6,13 @@ class Product < ApplicationRecord
 	#Product Validations
 	validates :name, presence: true, 
 					 uniqueness: true, 
-					 length: { maximum: 1024 }	 	 
+					 length: { maximum: 1024 }	 	
+
     validates :upc, presence: true, 
     				uniqueness: true,
     				special_length: true,
     				numericality: { only_integer: true, message: 'should be digits'}
+    				
     validates :available_on, presence: true,
     						 future_date: true
     

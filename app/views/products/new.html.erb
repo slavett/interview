@@ -42,27 +42,18 @@
         	</div>
       	</div>
 
-       
-      <!-- 	Clicking the Submit button here will send an HTTP POST request to /products,
+      	<!-- 	Clicking the Submit button here will send an HTTP POST request to /products,
 	  		which also calls the products#create controller action 	-->
-      <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
+       <div class="row" style="margin: 30px;">
+       		<div class="col-lg-6 text-left">
+       			<%= f.submit "Submit", class: "btn btn-primary" %>
+       		</div>
+       		<div class="col-lg-6 text-right">  
+	   			<div class="btn btn-primary">
+					<%= link_to 'Add More Properties', "/products/new", style: 'color:#FFFFFF;' %>
+				</div> 
+			</div>
+		</div>
+
     <% end %>
-
-    <!-- Button Link to Product Search/Listing Page -->
-	<div class="row" style="margin: 30px;">
-		<div class="col-lg-6">
-			<div class="btn btn-primary">
-			<%= link_to 'List/Search Products', "/products", style: 'color:#FFFFFF;' %> 
-			</div>
-		</div>
-		<div class="col-lg-6">
-			<div class="btn btn-primary">
-			<%= link_to 'Add More Properties', "/products/new", style: 'color:#FFFFFF;' %> 
-			</div>
-		</div>
-	</div>
-
-
 </div>
-
-
