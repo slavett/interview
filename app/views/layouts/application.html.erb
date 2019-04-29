@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
 
     <!-- CDN for Bootstrap (UI/Front-End Framework)-->
-    <!-- Can alternatively install gem for bootstrap in a larger project-->
+    <!-- Can alternatively install gem for bootstrap in a larger-scaled project-->
 	<%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +13,33 @@
 
   </head>
 
+
   <body>
-    <%= yield %>
+
+  	<div class="container">
+
+	  	<!-- Project Header -->
+	  	<div class="container text-center">
+	      	<div class="row" style="margin: 30px">
+				<div class="col-lg-12">
+					<h1>Product Management Tool</h1>
+				</div>
+			</div>
+		</div>
+
+	    <%= yield %>
+
+	    <!-- Project Footer -->
+	    <div class="container fixed-bottom text-center">
+	      	<div class="row" style="margin: 30px;">
+				<div class="col-lg-12">
+		        	<span class="text">By: Stephen Lavett -- Highlands Interview Project</span>
+		      	</div>
+	    	</div>
+		</div>
+
+	</div>
+
   </body>
+
 </html>

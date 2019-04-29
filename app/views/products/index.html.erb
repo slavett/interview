@@ -1,26 +1,32 @@
 <div class="container text-center">
 	
+	<!-- View Header -->
 	<div class="row" style="margin: 30px;">
 		<div class="col-lg-12">
-			<h1>Welcome to the Highlands Interview App!</h1>
-			<h3>Which page would you like to visit:</h3> 
+			<h3>Product Listing</h3>
 		</div>
 	</div>
 
+	<!-- Display all existing products-->
+	<div class="container text-left">
+		<% @products.each do |product| %>
+		<div class="row" style="margin: 30px;">
+			<div class="col-lg-12">
+				<p style="margin: 0px;">Name: <%= product.name %></p>
+				<p style="margin: 0px;">UPC: <%= product.upc %></p>
+				<p style="margin: 0px;">Availeble On: <%= product.available_on.strftime("%m/%d/%Y") %></p>
+			</div>
+		</div>
+		<% end %>
+	</div>
+
+	<!-- Button Link to Product Create Page -->
 	<div class="row" style="margin: 30px;">
 		<div class="col-lg-12">
 			<div class="btn btn-primary">
-				<%= link_to 'Create Product', "/product/new", style: 'color:#FFFFFF;' %> 
-			</div>
-			<div class="btn btn-primary">
-				<%= link_to 'List Products', "/product/list", style: 'color:#FFFFFF;' %> 
+				<%= link_to 'Click Here To Create a New Product', "/products/new", style: 'color:#FFFFFF;' %> 
 			</div>
 		</div>
 	</div>
 
-	<div class="row" style="margin: 30px;">
-		<div class="col-lg-12">
-			<h5>Author: Stephen Lavett -- May 2019</h5> 
-		</div>
-	</div>
 </div>

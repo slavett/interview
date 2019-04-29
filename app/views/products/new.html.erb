@@ -1,9 +1,68 @@
-<h1>Create New Product</h1>
+<div class="container text-center">
+	
+	<!-- View Header -->
+	<div class="row" style="margin: 30px;">
+		<div class="col-lg-12">
+			<h3>Create New Product</h3>
+		</div>
+	</div>
+
+	<!-- New @product object and form using form_for helper method -->
+	<%= form_for @product do |f| %>
+		<% if @product.errors.any? %>
+			<% @product.errors.full_messages.each do |error| %>
+				<div class= "alert alert-danger">
+					<%= error %>
+				</div>
+			<% end %>
+		<% end %>
+      	<div class="form-group text-left">
+      		<div class="col-lg-12">
+        		<%= f.label :name, "Name:"%>
+    		</div>
+        	<div class="col-lg-12">
+          		<%= f.text_field :name, class: "form-control" %>
+        	</div>
+      	</div>
+      	<div class="form-group text-left">
+      		<div class="col-lg-12">
+        		<%= f.label :upc, "UPC:"%>
+    		</div>
+        	<div class="col-lg-12" >
+          		<%= f.text_field :upc, class: "form-control" %>
+        	</div>
+      	</div>
+
+      	<div class="form-group text-left">
+      		<div class="col-lg-12">
+        		<%= f.label :available_on, "Available On:"%>
+    		</div>
+        	<div class="col-lg-12">
+          		<%= f.date_field :available_on, class: "form-control", max: '9999-12-31'%>
+        	</div>
+      	</div>
+
+       
+      <!-- 	Clicking the Submit button here will send an HTTP POST request to /products,
+	  		which also calls the products#create controller action 	-->
+      <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
+    <% end %>
+
+    <!-- Button Link to Product Search/Listing Page -->
+	<div class="row" style="margin: 30px;">
+		<div class="col-lg-6">
+			<div class="btn btn-primary">
+			<%= link_to 'List/Search Products', "/products", style: 'color:#FFFFFF;' %> 
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="btn btn-primary">
+			<%= link_to 'Add More Properties', "/products/new", style: 'color:#FFFFFF;' %> 
+			</div>
+		</div>
+	</div>
 
 
-<div class="btn btn-primary">
-	<%= link_to 'Home Page', "/", style: 'color:#FFFFFF;' %> 
 </div>
-<div class="btn btn-primary">
-	<%= link_to 'List Products', "/product/list", style: 'color:#FFFFFF;' %> 
-</div>
+
+

@@ -1,6 +1,8 @@
 class ProductProperty < ApplicationRecord
+	#ProductProperty associations
 	belongs_to :product
 	belongs_to :property 
 
-	#TODO: Add model-layer validations for data input
+	#ProductProperty Validations
+	
 end
