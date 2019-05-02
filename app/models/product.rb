@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 	#Product associations
 	has_many :product_properties 
 	has_many :properties, through: :product_properties 
+	accepts_nested_attributes_for :properties, :product_properties
 
 	#Product Validations
 	validates :name, presence: true, 
@@ -12,11 +13,14 @@ class Product < ApplicationRecord
     				uniqueness: true,
     				special_length: true,
     				numericality: { only_integer: true, message: 'should be digits'}
-    				
+
     validates :available_on, presence: true,
     						 future_date: true
     
-    #i validated the 1024 restraint. works like a charm and the database table allows us to store the whole string
+    validates_associated :properties, :product_properties
+    
+    #i validated the 1024 restraint. works like a charm and the database 
+    #table allows us to store the whole string
 
     #need to consider condensing this 
     #need to add future date validation 

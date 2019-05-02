@@ -1,59 +1,66 @@
 <div class="container text-center">
 	
 	<!-- View Header -->
-	<div class="row" style="margin: 30px;">
-		<div class="col-lg-12">
+	<div class="row" style="margin: 15px;">
+		<div class="col-md-12">
 			<h3>Create New Product</h3>
 		</div>
 	</div>
 
 	<!-- New @product object and form using form_for helper method -->
-	<%= form_for @product do |f| %>
+	<%= form_for @product, url: products_path do |f| %>
 		<% if @product.errors.any? %>
 			<% @product.errors.full_messages.each do |error| %>
-				<div class= "alert alert-danger">
-					<%= error %>
-				</div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class= "alert alert-danger">
+            <%= error %>
+          </div>
+        </div>
+			</div>
 			<% end %>
 		<% end %>
-      	<div class="form-group text-left">
-      		<div class="col-lg-12">
-        		<%= f.label :name, "Name:"%>
-    		</div>
-        	<div class="col-lg-12">
-          		<%= f.text_field :name, class: "form-control" %>
-        	</div>
-      	</div>
-      	<div class="form-group text-left">
-      		<div class="col-lg-12">
-        		<%= f.label :upc, "UPC:"%>
-    		</div>
-        	<div class="col-lg-12" >
-          		<%= f.text_field :upc, class: "form-control" %>
-        	</div>
-      	</div>
-
-      	<div class="form-group text-left">
-      		<div class="col-lg-12">
-        		<%= f.label :available_on, "Available On:"%>
-    		</div>
-        	<div class="col-lg-12">
-          		<%= f.date_field :available_on, class: "form-control", max: '9999-12-31'%>
-        	</div>
-      	</div>
-
-      	<!-- 	Clicking the Submit button here will send an HTTP POST request to /products,
-	  		which also calls the products#create controller action 	-->
-       <div class="row" style="margin: 30px;">
-       		<div class="col-lg-6 text-left">
-       			<%= f.submit "Submit", class: "btn btn-primary" %>
-       		</div>
-       		<div class="col-lg-6 text-right">  
-	   			<div class="btn btn-primary">
-					<%= link_to 'Add More Properties', "/products/new", style: 'color:#FFFFFF;' %>
-				</div> 
-			</div>
-		</div>
-
+  	<div class="form-group text-left">
+    	<%= f.label :name, "Name:"%>
+      <%= f.text_field :name, class: "form-control" %>
+  	</div>
+  	<div class="form-group text-left">
+    	<%= f.label :upc, "UPC:"%>
+      <%= f.text_field :upc, class: "form-control" %>
+  	</div>
+  	<div class="form-group text-left">
+    	<%= f.label :available_on, "Available On:"%>
+      <%= f.date_field :available_on, class: "form-control", max: '9999-12-31'%>
+   	</div>
+    
+    <%= f.fields_for(:properties) do |ft| %>
+      <%= f.fields_for(:product_properties) do |fi| %>
+          <div class="form-row">
+            <div class="form-group col-md-6 text-left">
+	    			  <%= ft.label :name, "Property Name:"%>
+              <%= ft.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group col-md-6 text-left">
+              <%= fi.label :value, "Property Value:"%>
+              <%= fi.text_field :value, class: "form-control" %>
+            </div>
+          </div>
+      <% end %>
     <% end %>
+
+  	<!-- 	Clicking the Submit button here will send an HTTP POST request to /products,
+		which also calls the products#create controller action 	-->
+    <div class="row">
+     		<div class="col-md-6 text-left">
+     			<%= f.submit "Submit", class: "btn btn-primary"%>
+     		</div>
+     		<div class="col-md-6 text-right">  
+   			  <div class="btn btn-primary">
+  			    <%= link_to 'Add More Properties', "/products/new", style: 'color:#FFFFFF;'%>
+  		   </div> 
+  	    </div>
+    </div>
+
+  <% end %>
+
 </div>

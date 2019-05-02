@@ -1,8 +1,8 @@
 <div class="container text-center">
 	
 	<!-- View Header -->
-	<div class="row" style="margin: 30px;">
-		<div class="col-lg-12">
+	<div class="row" style="margin: 15px;">
+		<div class="col-md-12">
 			<h3>Product Listing</h3>
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 	<div class="container text-left">
 		<% @products.each do |product| %>
 		<div class="row" style="margin: 30px;">
-			<div class="col-lg-12">
+			<div class="col-md-12">
 				<p style="margin: 0px;">Name: <%= product.name %></p>
 				<p style="margin: 0px;">UPC: <%= product.upc %></p>
 				<p style="margin: 0px;">Available On: <%= product.available_on.strftime("%m/%d/%Y") %></p>
