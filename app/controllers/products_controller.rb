@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
 		@product = Product.new
 
 		#create new object/instance for associations
+		#@product.properties << @property
+		
+
 		@product.properties.build
 		@product.product_properties.build
 	end
@@ -37,9 +40,10 @@ class ProductsController < ApplicationController
 
 	private #safely collects data from the product input form
 	  	def product_params 
-	    	params.require(:product).permit(:name, :upc, :available_on,
-	    		properties_attributes: [:name, :string],
-	    		product_properties_attributes: [:value, :string]) 
+	    	params.require(:product).permit(
+	    		:name, :upc, :available_on,
+	    		properties_attributes: [:name],
+	    		product_properties_attributes: [:value]) 
 	  	end 
 
 end
