@@ -4,7 +4,7 @@ class Property < ApplicationRecord
 	has_many :products, through: :product_properties 
 
 	#Property Validations
-	#validates :name, presence: true, 
-	#				 uniqueness: true, 
-	#				 length: { maximum: 255 }
+	validates :name, presence: true, 
+					 uniqueness: true, 
+					 length: { maximum: 255 }
 end

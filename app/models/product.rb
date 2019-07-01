@@ -17,7 +17,7 @@ class Product < ApplicationRecord
     validates :available_on, presence: true,
     						 future_date: true
     
-    #validates_associated :properties, :product_properties
+    validates_associated :properties, :product_properties
     
     #i validated the 1024 restraint. works like a charm and the database 
     #table allows us to store the whole string
